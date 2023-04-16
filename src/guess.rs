@@ -3,7 +3,7 @@ use rand::{thread_rng, Rng};
 use std::cmp::Ordering;
 
 
-pub fn guess_game() {
+pub fn guess_game() -> i32 {
     let mut rng = thread_rng();
     println!("guess the number!");
 
@@ -20,11 +20,10 @@ pub fn guess_game() {
 
 
     let secret_number: u32 = rng.gen_range(1..10);
-
     // Now lets compare the guess with the secret number
     match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small"),
-        Ordering::Greater => println!("Too Big!"),
-        Ordering::Equal => println!("You win! :)"),
-    }
+        Ordering::Less => return -1,
+        Ordering::Greater => return 1,
+        Ordering::Equal => return 0,
+    };
 }
