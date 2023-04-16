@@ -1,20 +1,17 @@
 mod guess;
+mod data_types;
 
-use guess::guess_game;
+use std::thread::sleep;
+use std::time::Duration;
+
 
 fn main() {
-    loop {
-        match guess_game() {
-            0 => {
-                println!("You win :)");
-                break;
-            },
-            1 => println!("Too Big"),
-            -1 => println!("Too Small"),
-            _ => {
-                println!("What just happened?");
-            }
-        }
+    let dur = Duration::new(1, 0);
+    let mut count: u8 = 10;
+    while count != 0 {
+        println!("{count}");
+        count -= 1;
+        sleep(dur);
     }
-
+    println!("LIFT OFF!")
 }
